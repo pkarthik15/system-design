@@ -17,7 +17,6 @@ LIST_BOOKMARKS_BY_TITLE = """
 """
 
 
-
 LIST_BOOKMARKS_TAG = """
     SELECT b.id, b.url, b.title, b.created_at, user_id
     FROM bookmarks b
@@ -36,19 +35,23 @@ INSERT_BOOKMARK = """
     RETURNING id, url, title, created_at, user_id
 """
 
+
 DELETE_BOOKMARK = """
     DELETE FROM bookmarks WHERE id = %s
 """
 
+
 DELETE_BOOKMARK_TAG = """
     DELETE FROM bookmark_tags WHERE bookmark_id = %s
 """
+
 
 INSERT_BOOKMARK_TAG = """
     INSERT INTO bookmark_tags (bookmark_id, tag_id)
     VALUES (%s, %s)
     RETURNING bookmark_id, tag_id
 """
+
 
 TAGS_FOR_BOOKMARK = """
     SELECT t.name
@@ -57,11 +60,13 @@ TAGS_FOR_BOOKMARK = """
     WHERE bt.bookmark_id = %s
 """
 
+
 INSERT_TAG = """
     INSERT INTO tags (name)
     VALUES (%s)
     RETURNING id, name
 """
+
 
 GET_TAG = """
     SELECT id, name
